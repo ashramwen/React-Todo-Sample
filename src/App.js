@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { List } from "immutable";
 // import logo from "./logo.svg";
 import "./App.scss";
 
-import List from "./component/List";
+import TodoList from "./component/TodoList";
 import Add from "./component/Add";
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
         <div className="row justify-content-md-center">
           <Add onAdd={this.onAdd} />
         </div>
-        <List items={this.state.items} delete={this.delete} />
+        <TodoList items={this.state.items} delete={this.delete} />
       </div>
     );
   }
