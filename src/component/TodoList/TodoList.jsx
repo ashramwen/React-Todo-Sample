@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TodoItem from '../TodoItem'
+import { connect } from 'react-redux';
+
+import TodoItem from '../TodoItem';
 //import { Test } from './TodoList.styles';
 
-const TodoList = (props) => (
-  <TodoItem items={props.items} delete={props.delete} />
-);
+const TodoList = ({ items }) => {
+  return items.map(o => (
+    <TodoItem key={o.id} item={o} />
+  ));
+};
 
 TodoList.propTypes = {
   items: PropTypes.array,
@@ -16,4 +20,10 @@ TodoList.defaultProps = {
   // bla: 'test',
 };
 
-export default TodoList;
+const mapStateToProps = state => ({
+  items: state.todos
+});
+
+export default connect(
+  mapStateToProps
+)(TodoList);

@@ -1,0 +1,10 @@
+export const TODO_TYPE = {
+  ADD_TODO: 'ADD_TODO',
+  DEL_TODO: 'DELETE_TODO',
+  EDIT_TODO: 'EDIT_TODO'
+};
+
+export const FUNC_TYPE = {
+  ADD_FUNC: 'ADD_FUNC',
+  SELECT_FUNC: 'SELECT_FUNC'
+};
