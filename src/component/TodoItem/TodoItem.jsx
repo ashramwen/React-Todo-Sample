@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import "./TodoItem.scss";
 //import { Test } from './TodoItem.styles';
 
-function TodoItem(props) {
+const TodoItem = props => {
   let items = props.items.map((o, i) => (
     <div className="row justify-content-md-center" key={i}>
       <div className="card">
@@ -21,7 +21,7 @@ function TodoItem(props) {
     </div>
   ));
   return items;
-}
+};
 
 TodoItem.propTypes = {
   items: PropTypes.array,

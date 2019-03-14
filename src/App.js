@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List } from "immutable";
+// import { List } from "immutable";
 // import logo from "./logo.svg";
 import "./App.scss";
 

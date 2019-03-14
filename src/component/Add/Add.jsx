@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 //import { Test } from './Add.styles';
 
-function Add({ onAdd }) {
+const Add = ({ onAdd }) => {
   let textInput = React.createRef();
 
-  function onSubmit(e) {
+  let onSubmit = e => {
     e.preventDefault();
     if (!textInput.current.value) return;
     onAdd(textInput.current.value);
     textInput.current.value = "";
-  }
+  };
 
   return (
     <div className="card">
@@ -36,7 +36,7 @@ function Add({ onAdd }) {
       </div>
     </div>
   );
-}
+};
 
 Add.propTypes = {
   add: PropTypes.func,
