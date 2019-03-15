@@ -1,4 +1,10 @@
 /* your css code */
+.todo-list{
+  line-height: 38px;
+}
+.input-group {
+  justify-content: space-between;
+}
 .btn-group {
-  float: right;
+  align-self: flex-end;
 }

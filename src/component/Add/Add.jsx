@@ -1,50 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addTodo, editTodo, addFunc } from '../../actions';
+import { addTodo } from '../../actions';
 //import { Test } from './Add.styles';
+import TodoInput from './TodoInput/index';
 
-const Add = ({ current, edit_mode, dispatch }) => {
+const Add = ({ dispatch }) => {
   let textInput = React.createRef();
+
   const onSubmit = e => {
     e.preventDefault();
-    if (!textInput.current.value) return;
-    if (edit_mode) {
-      dispatch(editTodo(current.id, textInput.current.value));
-    } else {
-      dispatch(addTodo(textInput.current.value));
-    }
+    if (!textInput.current.value.trim()) return;
+    dispatch(addTodo(textInput.current.value.trim()));
     textInput.current.value = '';
   };
 
-  const onCancelEdit = () => {
-    textInput.current.value = '';
-    dispatch(addFunc());
-  };
+  useEffect(() => {
+    // console.log('textInput', textInput);
+  });
 
   return (
     <div className="card">
       <div className="card-body">
-        <h5 className="card-title">{edit_mode ? 'Edit' : 'Add'} item</h5>
+        <h5 className="card-title">Add item</h5>
         <div className="card-text">
           <form onSubmit={onSubmit}>
             <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Todo description"
-                ref={textInput}
-                // defaultValue={current.text}
-              />
+              <TodoInput ref={textInput} />
               <div className="input-group-append">
                 <button className="btn btn-secondary" type="submit">
-                  {edit_mode ? 'Edit' : 'Add'}
+                  Add
                 </button>
-                {edit_mode && (
-                  <button className="btn btn-danger" onClick={onCancelEdit}>
-                    Cancel
-                  </button>
-                )}
               </div>
             </div>
           </form>
@@ -54,15 +40,13 @@ const Add = ({ current, edit_mode, dispatch }) => {
   );
 };
 
-Add.propTypes = {
-  add: PropTypes.func,
-  handleChange: PropTypes.func,
-  text: PropTypes.string
-};
+// Add.propTypes = {
 
-Add.defaultProps = {
-  // bla: 'test',
-};
+// };
+
+// Add.defaultProps = {
+//   // bla: 'test',
+// };
 
 const mapStateToProps = state => ({ ...state.func });
 

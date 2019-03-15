@@ -6,9 +6,7 @@ import TodoItem from '../TodoItem';
 //import { Test } from './TodoList.styles';
 
 const TodoList = ({ items }) => {
-  return items.map(o => (
-    <TodoItem key={o.id} item={o} />
-  ));
+  return items.map(o => <TodoItem key={o.id} todo={o} />);
 };
 
 TodoList.propTypes = {
@@ -24,6 +22,4 @@ const mapStateToProps = state => ({
   items: state.todos
 });
 
-export default connect(
-  mapStateToProps
-)(TodoList);
+export default connect(mapStateToProps)(TodoList);
